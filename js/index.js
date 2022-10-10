@@ -5,13 +5,8 @@ const contadorCarrito = document.getElementById("contador");
 const contadorCarrito1 = document.getElementById("contador1");
 const precioTotal = document.getElementById("precio-total");
 const btnRestar = document.getElementById("btn-restar");
-const $carritoVacio = document.getElementById("carrito-vacio");
-
 
 let carrito = [];
-
-if (carrito.length === 0) { $carritoVacio.innerHTML = ` `}else{
- $carritoVacio.innerHTML ='<p class ="parrafo-carrito">El carrito esta vacio </p> ';}
 
 /* get local storage */
  document.addEventListener('DOMContentLoaded', () =>{
@@ -44,12 +39,9 @@ let producto7 = new Producto(7,'Gorra trucker','Parche bordado personalizable',1
 let producto8 = new Producto(8,'Leo Messi + Copa Mundial','20 cm relleno de vellon siliconado',600,"https://i.ibb.co/sQYxdgd/Whats-App-Image-2022-09-28-at-10-05-40.jpg",0);
 let producto9 = new Producto(9,'Porta Sube','Personalizados con vinilo',250,"https://i.ibb.co/cFmMk41/Whats-App-Image-2022-09-29-at-18-39-54.jpg",0);
 
-
-
 productos.push(producto1,producto2,producto3,producto4,producto5,producto6,producto7,producto8,producto9);
 
 let div = document.getElementById('contenedor-div');
-
 productos.forEach(el=>{
     const {id,nombre,descripcion,precio,img,cantidad} = el;
     let productoRenderizado = document.createElement('div');
@@ -67,9 +59,7 @@ productos.forEach(el=>{
     </div>
     `
     div.append(productoRenderizado);
-    
     const boton = document.getElementById(el.id);
-
     boton.addEventListener("click", ()=> {
         let productoExiste = carrito.find(item => item.id === el.id);
         console.log(el.id);
@@ -95,18 +85,13 @@ productos.forEach(el=>{
             showConfirmButton: false,
             timer: 1500
           })  
-     console.log(carrito);  
-     
     });
-   
-    
 })
 
 const actualizarCarrito = () => {
     (carrito.length === 0) 
     ? contenedorCarrito.innerHTML=`<p class="p-carrito_vacio">El carrito de compras esta vacio<p>`
     : contenedorCarrito.innerHTML="";
-
     carrito.forEach(prod =>{
     const {id,nombre,descripcion,precio,cantidad,img} = prod;
     const carritoActualizado = document.createElement("div");
@@ -130,17 +115,13 @@ const actualizarCarrito = () => {
                    </button>
                  </div>
              </div>
-        
     </div>
      `;
     
-    //  <a href="#" class="btn btn-primary btn-sm" id="${prod.id}">Borrar compra</a>
-    contenedorCarrito.appendChild(carritoActualizado);
     
-     
+    contenedorCarrito.appendChild(carritoActualizado);
     })
     localStorage.setItem("carrito", JSON.stringify(carrito));
-
     contadorCarrito.innerText = carrito.length;
     contadorCarrito1.innerText= carrito.length;
     precioTotal.innerText = carrito.reduce((acum, el) => acum + el.precio,0);
