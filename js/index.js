@@ -62,20 +62,11 @@ productos.forEach(el=>{
     const boton = document.getElementById(el.id);
     boton.addEventListener("click", ()=> {
         let productoExiste = carrito.find(item => item.id === el.id);
-        console.log(el.id);
         if(productoExiste !== undefined){
             productoExiste.precio = productoExiste.precio + el.precio;
             productoExiste.cantidad = productoExiste.cantidad + 1;
         }else{
-            carrito.push({
-                id: el.id,
-                nombre: el.nombre,
-                descripcion: el.descripcion,
-                precio: el.precio,
-                img: el.img,
-                cantidad: el.cantidad +1
-            })
-            
+            carrito.push({...el,cantidad:cantidad+1});  
         }
         actualizarCarrito();  
         Swal.fire({
@@ -129,7 +120,6 @@ const actualizarCarrito = () => {
 
 const borrarItemCarr = (prod) => {
     const item = carrito.find(el=> el.id === prod);
-    console.log(item);
     const indice = carrito.indexOf(item);
     carrito.splice(indice,1);
     actualizarCarrito();
