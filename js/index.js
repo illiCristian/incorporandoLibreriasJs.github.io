@@ -5,11 +5,13 @@ const contadorCarrito = document.getElementById("contador");
 const contadorCarrito1 = document.getElementById("contador1");
 const precioTotal = document.getElementById("precio-total");
 const btnRestar = document.getElementById("btn-restar");
-const carritoVacio = document.getElementById("carrito-vacio");
+const $carritoVacio = document.getElementById("carrito-vacio");
+
 
 let carrito = [];
 
-// carrito.length === 0 && 
+if (carrito.length === 0) { $carritoVacio.innerHTML = ` `}else{
+ $carritoVacio.innerHTML ='<p class ="parrafo-carrito">El carrito esta vacio </p> ';}
 
 /* get local storage */
  document.addEventListener('DOMContentLoaded', () =>{
@@ -49,16 +51,17 @@ productos.push(producto1,producto2,producto3,producto4,producto5,producto6,produ
 let div = document.getElementById('contenedor-div');
 
 productos.forEach(el=>{
+    const {id,nombre,descripcion,precio,img,cantidad} = el;
     let productoRenderizado = document.createElement('div');
     productoRenderizado.innerHTML=`
     <div class="my-2 px-2">
         <div class="card card-index" style="width: 15rem;">
-            <img src="${el.img}" class="card-img-top" alt="...">
+            <img src="${img}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title text-decoration-underline text-center">${el.nombre}</h5>
-                <p class="card-text text-center">${el.descripcion}.</p>
-                <p class="card-text text-center ">Precio: $${el.precio}.</p>
-                <a class="btn btn-primary btn-primary btn-carrito" id="${el.id}">Agregar al carrito</a>
+                <h5 class="card-title text-decoration-underline text-center">${nombre}</h5>
+                <p class="card-text text-center">${descripcion}.</p>
+                <p class="card-text text-center ">Precio: $${precio}.</p>
+                <a class="btn btn-primary btn-primary btn-carrito" id="${id}">Agregar al carrito</a>
             </div>
         </div>
     </div>
@@ -100,36 +103,36 @@ productos.forEach(el=>{
 })
 
 const actualizarCarrito = () => {
-    contenedorCarrito.innerHTML="";
+    (carrito.length === 0) 
+    ? contenedorCarrito.innerHTML=`<p class="p-carrito_vacio">El carrito de compras esta vacio<p>`
+    : contenedorCarrito.innerHTML="";
+
     carrito.forEach(prod =>{
-    
+    const {id,nombre,descripcion,precio,cantidad,img} = prod;
     const carritoActualizado = document.createElement("div");
-     carritoActualizado.innerHTML =`
-     <div class="card text-bg-dark">
-         <div class="row g-0 col-xs-5">
-             <div class="col-md-6 col-sm-6 ">
-                <img src="${prod.img}" class="img-fluid rounded-start" alt="...">
-    </div>
-        <div class="col-md-6 col-sm-6 col-xs-7">
-        <div class="card-body card-carrito">
-            <h5 class="card-title text-decoration-underline">${prod.nombre}</h5>
-            <p class="card-text">${prod.descripcion}.<br>
-            Cantidad: ${prod.cantidad}</p>
-            Precio: $${prod.precio}</p>
-            <div class="div-carrito1">
-            <button id="trash" onclick="borrarItemCarr(${prod.id})"><i class="fas fa-trash-alt mr-3"></i></button>
-            <button class="btn btn-danger btn-sm boton-sumar" onclick="sumarItemCarr(${prod.id})" id="${prod.id}">
-                +
-            </button>
-            <button class="btn btn-danger btn-sm" onclick="restarItemCarr(${prod.id})" id="btn-restar">
-                -
-            </button>
-            </div>
+     carritoActualizado.innerHTML = `
+    <div class="card-carrito my-1">
+        <div class="carrito-div_img">
+          <img src="${img}" class="carrito-img" alt="...">
         </div>
-        </div>
+            <div class="carrito-body">
+              <h5 class="card-title text-decoration-underline text-uppercase text-white">${nombre}</h5>
+              <p class="card-text">${descripcion}.<br>
+               Cantidad: ${cantidad}<br>
+               Precio: $${precio}</p>
+                 <div class="carrito-botones">
+                  <button id="trash" onclick="borrarItemCarr(${id})"><i class="fas fa-trash-alt mr-3"></i></button>
+                   <button class="btn btn-danger btn-sm boton-sumar" onclick="sumarItemCarr(${id})" id="${id}">
+                       +
+                  </button>
+                  <button class="btn btn-danger btn-sm" onclick="restarItemCarr(${id})" id="btn-restar">
+                        -
+                   </button>
+                 </div>
+             </div>
+        
     </div>
-    </div>
-     `
+     `;
     
     //  <a href="#" class="btn btn-primary btn-sm" id="${prod.id}">Borrar compra</a>
     contenedorCarrito.appendChild(carritoActualizado);

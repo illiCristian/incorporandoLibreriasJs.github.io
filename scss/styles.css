@@ -1,142 +1,3 @@
-/* @media (max-width: 570px) {
-    .container-carrito{
-      height: 200px !important;
-      display: flex !important;
-      flex-direction: row !important;
-    }
-    .container-carrito img{
-      width: 50% !important;
-      object-fit: cover !important;
-      
-    }
-} */
-.p-carrito_vacio{
-  font-size: 35px;
-}
-.offcanvas-title{
-  font-size: 30px;
-}
-.precio-producto{
-  font-size: 30px;
-
-}
-.offcanvas{
-  background-color: RGB(202, 135, 122) !important;
-}
-.card-carrito{
-    background-color: #B73E3E !important;
-    /* height: 200px; */
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 10px 5px 5px black !important;
-    display: flex;
-    flex-direction: row;
-  
-}
-.carrito-div_img{
-  max-width: 200px;
-}
-.carrito-img{     
-    height: 95%;
-    display: block;
-    border-radius: 5%;
-    margin: 2%;
-    object-fit: cover;
-    
-}
-
-.carrito-body{
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* align-items: flex-start; */
-  padding-left: 10px;
-}
-.card-carrito_botones{
-  /* padding: 5px;
-  position: absolute;
-  
-  gap: 10px;
-  bottom: 3px; */
-  display: flex;
-  justify-content: space-around;
-}
-
-.card-group{
-  max-width: 1200px !important;
-}
-.flex-index{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.card-index{
-  width: 330px; 
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 10px 5px 5px black !important;
-  background-color: #B73E3E !important  ;
-}
-.card-index img{
-    margin: 5%;
-    width: 90%;
-    display: block;
-    border-radius: 20px;
-    border: solid 1px;
-  }
-
-
-.btn-carrito-2{
-  position: relative;
-  right: 55px;
-  bottom: 14px;
-}
-.boton-carrito-fa{
-  height: 40px;
-  width: 40px;
-  border-radius: 30%;
-}
-#trash{
-  width: 40px;
-  height: 40px;
-}
-.container-carrito{
-  background-color: #B73E3E !important;
-}
-
-
-#boton-carrito{
-  border: none;
-  color: royalblue;
-  font-size: 40px;
-  background-color: white;
-  border-radius: 50%;
-  padding: 10px 20 px;
-  transition: all .3s;
-}
-#boton-carrito:hover{
-  cursor: pointer;
-  color: white;
-  background-color: royalblue;
-}
-
-/*  */
-.card-body{
-  height: 200px;
-  color: #fff;
-  border-radius: 20px;
-}
-.btn-carrito{
-
-  position: absolute;
-  bottom: 10px;
-  left: 45px;
-}
-.card-body text{
-  color: #fff;
-}
 .container_sobreMi .row {
   justify-content: center;
   border-radius: 10px;
@@ -196,6 +57,7 @@ h2 {
 }
 
 header {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   /*Z index para superponer*/
@@ -223,11 +85,6 @@ header {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.card img{
-  height: 220px !important;
-  object-fit: cover;
-  
-} 
 .menu {
   grid-area: menu;
   /* background-color: rgb(197, 31, 38); */
@@ -311,14 +168,6 @@ header {
     font-size: 16px;
   }
 }
-@media(min-width: 800px){
-  .btn-carrito-2{
-    position: relative;
-    right: 55px;
-    bottom: 14px;
-    visibility: hidden;
-  }
-}
 @media (max-width: 800px) {
   .menu__items li a {
     padding: 4px 13px;
@@ -339,12 +188,6 @@ header {
     right: 20px;
     cursor: pointer;
     margin-top: 8px;
-  }
-  .menu-icon-2{
-    display: block;
-    position: relative;
-    bottom: 10px;
-    right: 45px;
   }
   .menu ul {
     display: block;
@@ -417,11 +260,12 @@ header {
   width: 100%;
   height: 100%;
 }
-/* .card img {
+.card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-} */
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 
 @media screen and (max-width: 800px) {
   .grid-container {
@@ -469,7 +313,8 @@ header {
   width: 300px;
   height: 420px;
   margin: 20px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   overflow: hidden;
   box-shadow: 0 25px 35px rgba(0, 0, 0, 0.2);
   transition: 0.5s;
@@ -478,7 +323,8 @@ header {
 .card-proyectos img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 @media (max-width: 800px) {
@@ -621,6 +467,4 @@ img {
 .link-footer {
   color: #FFFFFF;
   text-decoration: none;
-}
-
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */
